@@ -1,13 +1,21 @@
 // ./pages/posts.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SocialMediaPosts from '../components/SocialMediaPosts';
 
-const posts = [
-  { username: 'user1', content: 'This is a post' },
-  { username: 'user2', content: 'This is another post' },
-];
+type Post = {
+  username: string;
+  content: string;
+};
 
 const PostsPage: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    fetch('/api/posts')
+      .then((response) => response.json())
+      .then((data) => setPosts(data));
+  }, []);
+
   return <SocialMediaPosts posts={posts} />;
 };
 
