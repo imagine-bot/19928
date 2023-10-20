@@ -1,5 +1,7 @@
+// ./pages/index.tsx
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -8,6 +10,9 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
+      <Link href="/posts">
+        <a>Go to Posts</a>
+      </Link>
     </main>
   )
 }
